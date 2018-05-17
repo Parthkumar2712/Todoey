@@ -10,7 +10,7 @@ import UIKit
 
 class ToListViewController: UITableViewController {
 
-    let itemArray = ["Find Mike", "Buy Eggos", "Destory Demogorgon"]
+    var itemArray = ["Find Mike", "Buy Eggos", "Destory Demogorgon"]
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -26,6 +26,8 @@ class ToListViewController: UITableViewController {
        // print(itemArray[indexPath.row])
         return cell
     }
+    
+    //MARK - Table Delegate Method
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         //print(indexPath.row)
@@ -40,6 +42,24 @@ class ToListViewController: UITableViewController {
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
-
+    
+    //MARK - Add New Item
+    @IBAction func addButtonClicked(_ sender: UIBarButtonItem)
+    {
+        var textField = UITextField()
+        let alert = UIAlertController(title: "Add New Todoey Item", message: "", preferredStyle: .alert)
+        let action = UIAlertAction(title: "create new", style: .default) { (action) in
+            //what will happen once the user clicks the add Item button on over UI Alert
+           
+            self.itemArray.append(textField.text!)
+            self.tableView.reloadData()
+        }
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Create new item"
+            textField = alertTextField
+        }
+        alert.addAction(action)
+        present(alert,animated: true,completion: nil)
+    }
 }
 

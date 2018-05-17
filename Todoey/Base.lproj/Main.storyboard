@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -32,7 +33,16 @@
                             <outlet property="delegate" destination="cDs-1f-uGl" id="m7H-Qo-nAq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Todoey" id="XoP-xP-Eis"/>
+                    <navigationItem key="navigationItem" title="Todoey" id="XoP-xP-Eis">
+                        <rightBarButtonItems>
+                            <barButtonItem id="pHC-mE-hso"/>
+                            <barButtonItem systemItem="add" id="gTn-yw-avl">
+                                <connections>
+                                    <action selector="addButtonClicked:" destination="cDs-1f-uGl" id="KEA-Um-0ud"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l9I-0P-q3H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
